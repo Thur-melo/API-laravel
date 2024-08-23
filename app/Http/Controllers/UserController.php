@@ -10,12 +10,12 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usuarios=Usuarios::all();
-        return response ()->json($usuarios);
+        $limit = $request->input('limit', 10);
+        $usuarios = Usuarios::paginate($limit);
+        return response()->json($usuarios);
     }
-
 
     public function register(Request $request)
     {
