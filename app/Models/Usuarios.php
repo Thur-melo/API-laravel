@@ -16,7 +16,7 @@ class Usuarios extends Model
      public $timestamps = false;
 
      protected $fillable =[
-        'nomeUser', 'moduloUser', 'cursoUser'
+        'nomeUser'
 
      ];
 

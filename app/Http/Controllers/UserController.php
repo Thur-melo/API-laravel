@@ -12,24 +12,19 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $limit = $request->input('limit', 10);
-        $usuarios = Usuarios::paginate($limit);
-        return response()->json($usuarios);
+        $usuario = Usuarios::all();
+        return $usuario;
     }
 
-    public function register(Request $request)
-    {
-        $usuario = Usuarios::create([
-            'nomeUser' => $request->nomeUser,
-            'cursoUser' => $request->cursoUser,
-            'moduloUser' => $request->moduloUser,
-            'horarioUser' => $request->horarioUser,
-        ]);
+    
+ public function register(Request $request)
+ {
+    //  $usuario = new Usuarios();
 
-        return response()->json($usuario);
-
-
-    }
+    //  $usuario->nomeUser = $request->nomeUser;
+     
+    //  $usuario->save();
+ }
 
     public function login(Request $request){
         $usuario = Usuarios::where('emailUser',$request->emailUser)->first();
@@ -52,7 +47,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuarios();
+
+        $usuario->nomeUser = $request->nomeUser;
+        // $usuario->cursoUser = $request->cursoUser;
+        // $usuario->moduloUser = $request->moduloUser;
+        
+        $usuario->save();
+
+        return response()->json($usuario);
     }
 
     /**
