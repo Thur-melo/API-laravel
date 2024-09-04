@@ -21,8 +21,9 @@ class UserController extends Controller
     {
         $usuario = Usuarios::create([
             'nomeUser' => $request->nomeUser,
-            'emailUser' => $request->emailUser,
-            'senhaUser' => $request->senhaUser,
+            'cursoUser' => $request->cursoUser,
+            'moduloUser' => $request->moduloUser,
+            'horarioUser' => $request->horarioUser,
         ]);
 
         return response()->json($usuario);
