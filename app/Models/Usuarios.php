@@ -11,12 +11,12 @@ class Usuarios extends Model
 
      protected $table = 'tbuser';
 
-     protected $primaryKey = 'idUser';
+     protected $primaryKey = 'idUser' ;
 
      public $timestamps = false;
 
      protected $fillable =[
-        'nomeUser', 'moduloUser', 'cursoUser', 'horarioUser'
+        'nomeUser', 'moduloUser', 'cursoUser'
 
      ];
 
