@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('registro_atraso', function (Blueprint $table) {
             $table->id();
+            $table ->timestamp('data_hora_chegada')->nullable();
             $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade'); 
             $table->timestamps();
         });

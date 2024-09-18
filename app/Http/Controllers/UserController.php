@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RegistrosAtr;
 use App\Models\Usuarios;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $usuario = Usuarios::all();
+       
         return $usuario;
     }
 
