@@ -17,41 +17,42 @@ class UserController extends Controller
     }
 
     
- public function register(Request $request)
- {
-    //  $usuario = new Usuarios();
+ 
 
-    //  $usuario->nomeUser = $request->nomeUser;
-     
-    //  $usuario->save();
- }
+   
+public function login(Request $request)
+{
+  
+    $user = Usuarios::where('nome', $request->nome)
+                ->where('modulo', $request->modulo)
+                ->where('curso', $request->curso)
+                ->first();
 
-    public function login(Request $request){
-        $usuario = Usuarios::where('emailUser',$request->emailUser)->first();
-
-        if ($usuario && $usuario->senhaUser === $request ->senhaUser){
-            return response()->json($usuario);
-
-
-        }
-
-        return response()->json(['message' => 'Seha errada ae pae, ou email errado'], 401);
-
+    if ($user) {
+        return response()->json([
+            'userId' => $user->id, 
+            'nome' => $user->nome,
+            
+        ], 200);
+    } else {
+        return response()->json([
+            'message' => 'Usuário não encontrado',
+        ], 404);
     }
+}
 
 
 
 
     /**
-     * Store a newly created resource in storage.
-     */
+     * Store a newly created resource in storage  */
     public function store(Request $request)
     {
         $usuario = new Usuarios();
 
-        $usuario->nomeUser = $request->nomeUser;
-        // $usuario->cursoUser = $request->cursoUser;
-        // $usuario->moduloUser = $request->moduloUser;
+        $usuario->nome = $request->nome;
+         $usuario->curso = $request->curso;
+         $usuario->modulo = $request->modulo;
         
         $usuario->save();
 

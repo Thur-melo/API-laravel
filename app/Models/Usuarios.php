@@ -4,21 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\RegistrosAtr;
 
 class Usuarios extends Model
 {
     use HasFactory;
 
-     protected $table = 'tbuser';
+    protected $table = 'usuarios';
 
-     protected $primaryKey = 'idUser' ;
+    protected $fillable = ['nome', 'curso', 'modulo'];
 
-     public $timestamps = false;
-
-     protected $fillable =[
-        'nomeUser'
-
-     ];
+   
+    public function registros()
+    {
+        return $this->hasMany(RegistrosAtr::class, 'usuario_id');
+    }
 
 
 }
