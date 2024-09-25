@@ -11,4 +11,5 @@ Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
 
 Route::post('/usuarios/{usuarioId}/registrar-chegada', [RegistrosAtrController::class, 'registrarChegada']);
+Route::get('/usuarios/{usuarioId}/chegadas', [RegistrosAtrController::class, 'getChegadas']);
 
